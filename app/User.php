@@ -16,7 +16,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'first_name',
+        'last_name',
+        'gender',
+        'country',
+        'mobile_num',
+        'occupation',
+        'painlist_id'
     ];
 
     /**
@@ -36,4 +45,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function painlist(){
+        return $this->hasMany('App\PainList');
+    }
+
+    
 }

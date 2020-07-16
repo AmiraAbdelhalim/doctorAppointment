@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('occupation')->nullable();
             $table->integer('mobile_num')->nullable();
             $table->unsignedTinyInteger('is_admin')->default(0);
-            $table->integer('pain_list_id')->nullable();
+            $table->integer('painlist_id')->nullable();
 
         });
     }

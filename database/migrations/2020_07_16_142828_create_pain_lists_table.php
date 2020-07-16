@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePainListTable extends Migration
+class CreatePainListsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreatePainListTable extends Migration
      */
     public function up()
     {
-        Schema::create('pain_list', function (Blueprint $table) {
+        Schema::create('pain_lists', function (Blueprint $table) {
             $table->id();
             $table->string('pain_type');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
