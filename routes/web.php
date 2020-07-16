@@ -26,6 +26,9 @@ Route::get('/user', 'users\UserController@edit')->name('user.edit');
 Route::put('/user', 'users\UserController@update')->name('user.update');
 
 
+Route::get('/admin', 'admins\AdminController@index')->name('admin.index');
+
+
 
 
 
