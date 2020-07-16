@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+Route::get('/users', 'users\UserController@index')->name('users.index');
 Route::get('/user', 'users\UserController@edit')->name('user.edit');
 Route::put('/user', 'users\UserController@update')->name('user.update');
 
