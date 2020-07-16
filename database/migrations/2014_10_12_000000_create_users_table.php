@@ -21,6 +21,15 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('country')->nullable();
+            $table->string('occupation')->nullable();
+            $table->integer('mobile_num')->nullable();
+            $table->unsignedTinyInteger('is_admin')->default(0);
+            $table->integer('pain_list_id')->nullable();
+
         });
     }
 
