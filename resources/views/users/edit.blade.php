@@ -38,15 +38,15 @@
     <div class="form-group">
       <label>Pain Type</label>
       <select name="painlist_id" class="form-control">
-                      @foreach($pain_lists as $pain)
-                      <option value="{{ $pain->id}}">{{$pain->pain_type}}</option>
+            @foreach($pain_lists as $pain)
+                <option value="{{ $pain->id}}">{{$pain->pain_type}}</option>
 
-                      @endforeach
-                    </select>
-       
+            @endforeach
         </select>
+       
     </div>
 
     <button type="submit" class="btn btn-primary">Reserve</button>
+    <a href="{{route('home')}}" class="btn btn-danger" >Cancel</a>
   </form>
 @endsection
