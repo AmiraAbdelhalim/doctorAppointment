@@ -21,14 +21,20 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/users', 'users\UserController@index')->name('users.index');
+
 Route::get('/user', 'users\UserController@edit')->name('user.edit');
 Route::put('/user', 'users\UserController@update')->name('user.update');
 
-
+# ADMINLTE
 Route::get('/admin', 'admins\AdminController@index')->name('admin.index');
+Route::get('/users', 'users\UserController@index')->name('users.index');
+Route::get('/doctors', 'doctors\DoctorController@index')->name('doctors.index');
 
-Route::GET('/home',function(){return view('adminlte.dashboard');})->name('doctor.index')->middleware('auth:doctor');
+
+
+
+#doctor gard
+Route::GET('/doctor-home',function(){return view('adminlte.dashboard');})->name('doctor.index')->middleware('auth:doctor');
 Route::GET('doctor','doctor\LoginController@showLoginForm')->name('doctor.login');
 Route::POST('doctor','doctor\LoginController@login');
 
