@@ -50,6 +50,12 @@
                                 <p>Doctors</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{url('appointments')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Appointments</p>
+                            </a>
+                        </li>
           <li class="nav-item">
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex"></div>
                     <a href="{{ route('logout') }}"

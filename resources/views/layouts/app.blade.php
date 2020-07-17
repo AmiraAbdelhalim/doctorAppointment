@@ -19,6 +19,11 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <!-- icons -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -60,7 +65,7 @@
                          <!-- Notifications Dropdown Menu -->
                         <li class="nav-item dropdown">
                             <a class="nav-link" data-toggle="dropdown" href="#">
-                            <i class="fa fa-bell"></i>
+                            <i class="fas fa-bell"></i>
                             <span class="badge badge-warning navbar-badge">15</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">

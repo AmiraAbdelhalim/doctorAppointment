@@ -29,6 +29,10 @@ Route::put('/user', 'users\UserController@update')->name('user.update');
 Route::get('/admin', 'admins\AdminController@index')->name('admin.index');
 Route::get('/users', 'users\UserController@index')->name('users.index');
 Route::get('/doctors', 'doctors\DoctorController@index')->name('doctors.index');
+Route::get('/appointments','appointments\AppointmentController@index')->name('appointments.index');
+Route::get('/appointments/create','appointments\AppointmentController@create')->name('appointments.create');
+Route::post('/appointments','appointments\AppointmentController@store')->name('appointments.store');
+
 
 
 
