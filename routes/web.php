@@ -28,7 +28,9 @@ Route::put('/user', 'users\UserController@update')->name('user.update');
 
 Route::get('/admin', 'admins\AdminController@index')->name('admin.index');
 
-
+Route::GET('/home',function(){return view('adminlte.dashboard');})->name('doctor.index')->middleware('auth:doctor');
+Route::GET('doctor','doctor\LoginController@showLoginForm')->name('doctor.login');
+Route::POST('doctor','doctor\LoginController@login');
 
 
 
