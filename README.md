@@ -36,10 +36,10 @@ http://127.0.0.1:8000
 
 
 ### Technologies
--Laravel
--MySQL
--HTML5
--CSS3
+- Laravel
+- MySQL
+- HTML5
+- CSS3
 
 ### Database Schema
 ```sh
