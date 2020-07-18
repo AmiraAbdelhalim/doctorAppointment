@@ -62,33 +62,44 @@
                                 </li>
                             @endif
                         @else
-                         <!-- Notifications Dropdown Menu -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" data-toggle="dropdown" href="#">
-                            <i class="fas fa-bell"></i>
-                            <span class="badge badge-warning navbar-badge">15</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <span class="dropdown-item dropdown-header">15 Notifications</span>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-envelope mr-2"></i> 4 new messages
-                                <span class="float-right text-muted text-sm">3 mins</span>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-users mr-2"></i> 8 friend requests
-                                <span class="float-right text-muted text-sm">12 hours</span>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-file mr-2"></i> 3 new reports
-                                <span class="float-right text-muted text-sm">2 days</span>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                            </div>
-                        </li>
+                        <!-- Notifications Dropdown Menu -->
+       <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+                <i class="far fa-bell nav-icon mr-3"></i>
+                @if(auth()->user()->unreadNotifications->count())
+                <span class="badge badge-warning navbar-badge">{{ auth()->user()->unreadNotifications->count() }}
+                </span>
+                @endif
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                <a href="{{route('mark')}}"><span class="dropdown-item dropdown-header">
+                        <i class="fas fa-envelope mr-2"></i>{{ auth()->user()->unreadNotifications->count() }}
+                        MarkAllAsRead</span></a>
+
+                </a>
+                {{--dd(var_dump(auth()->user()->unreadNotifications))--}}
+                @foreach(auth()->user()->unreadNotifications as $notification)
+
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item bg-info">
+                    {{ $notification->data['data'] }}
+
+                    <span class="float-right text-muted text-sm">3 mins</span>
+                </a>
+                @endforeach
+
+                @foreach(auth()->user()->readNotifications as $read)
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item">
+                    {{ $read->data['data'] }}
+                    <!-- <span class="float-right text-muted text-sm">3 mins</span> -->
+                </a>
+
+                @endforeach
+                <div class="dropdown-divider"></div>
+                <!-- <a href="#" class="dropdown-item dropdown-footer">Delete All Notifications</a> -->
+            </div>
+        </li>
                         <li class="nav-item">
                             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
                             <i class="fas fa-th-large"></i>

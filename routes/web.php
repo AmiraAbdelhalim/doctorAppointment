@@ -33,7 +33,14 @@ Route::get('/appointments','appointments\AppointmentController@index')->name('ap
 Route::get('/appointments/create','appointments\AppointmentController@create')->name('appointments.create');
 Route::post('/appointments','appointments\AppointmentController@store')->name('appointments.store');
 
-
+#Notification
+Route::prefix('/markAsRead')->middleware(['auth',])->group(function(){
+    Route::get('', function(){
+            auth()->user()->unreadNotifications->markAsRead();
+            return redirect()->back();
+            
+    })->name('mark');
+});
 
 
 

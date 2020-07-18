@@ -30,7 +30,14 @@ class AppointmentController extends Controller
 
     public function store(Request $request){
         // dd($request);
-        Appointment::create($request->all());
+        $appointments=Appointment::create($request->all());
+        $user=User::find($request->user_id);
+        $doctor=Doctor::find($request->doctor_id);
+        $appointment=$appointments->appoint;
+        $details=[
+            'body'=>"your appointment will be at $appointment"
+        ];
+        $user->notify(new \App\Notifications\AppointmentChecker($details));
         return redirect()->route('appointments.index');
     }
 }
