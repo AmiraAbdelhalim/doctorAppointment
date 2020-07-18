@@ -38,6 +38,7 @@ class AppointmentController extends Controller
             'body'=>"your appointment will be at $appointment"
         ];
         $user->notify(new \App\Notifications\AppointmentChecker($details));
+        $doctor->notify(new \App\Notifications\AppointmentChecker($details));
         return redirect()->route('appointments.index');
     }
 }

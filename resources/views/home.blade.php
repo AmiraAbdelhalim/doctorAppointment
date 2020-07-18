@@ -8,7 +8,10 @@
                <h1>Welcome To Doctor Appointment Website</h1>
                <hr>
                <br>
+               @if(!auth()->user()->specialization_id)
                <a href="{{route('user.edit')}}" class="btn btn-primary" >Fill Reservation Form</a>
+               @endif
+
             </div>
         </div>
     </div>

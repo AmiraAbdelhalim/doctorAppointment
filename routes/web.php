@@ -45,7 +45,7 @@ Route::prefix('/markAsRead')->middleware(['auth',])->group(function(){
 
 
 #doctor gard
-Route::GET('/doctor-home',function(){return view('adminlte.dashboard');})->name('doctor.index')->middleware('auth:doctor');
+Route::GET('/doctor-home',function(){return view('home');})->name('doctor.index')->middleware('auth:doctor');
 Route::GET('doctor','doctor\LoginController@showLoginForm')->name('doctor.login');
 Route::POST('doctor','doctor\LoginController@login');
 
