@@ -4,6 +4,7 @@ namespace App\Http\Controllers\appointments;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Appointment;
 use App\User;
 use App\Doctor;
@@ -12,10 +13,23 @@ class AppointmentController extends Controller
 {
     //
     public function index(){
-        $appointments= Appointment::all();
-        return view('appointments.index',[
-            'appointments'=>$appointments
-        ]);
+        
+        if (Auth::user()->is_admin == 1){
+            $appointments= Appointment::all();
+            // dd($appointments);
+            return view('appointments.index',[
+                'appointments'=>$appointments
+            ]);
+            
+        }else{
+            $appointments= Appointment::all();
+            // dd($appointments);
+            return view('home',[
+                'appointmentss'=> $appointments
+            ]);
+        }
+        
+        
     }
 
     public function create(){
@@ -39,6 +53,14 @@ class AppointmentController extends Controller
         ];
         $user->notify(new \App\Notifications\AppointmentChecker($details));
         $doctor->notify(new \App\Notifications\AppointmentChecker($details));
+        return redirect()->route('appointments.index');
+    }
+
+    public function update(Request $request, $id){
+    
+        Appointment::find($id)->update([
+            'status'=>'not approved'
+        ]);
         return redirect()->route('appointments.index');
     }
 }

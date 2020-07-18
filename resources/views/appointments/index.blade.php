@@ -19,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-        @foreach($appointments as $appointment)
+        @foreach($appointments ?? '' as $appointment)
                 <tr>
                 
                   <td>{{ $appointment->id }}</td>

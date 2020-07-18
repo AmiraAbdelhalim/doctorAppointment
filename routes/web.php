@@ -42,6 +42,10 @@ Route::prefix('/markAsRead')->middleware(['auth',])->group(function(){
     })->name('mark');
 });
 
+#approve notification
+Route::put('/approve/{id}', 'appointments\AppointmentController@update')->name('appointment.update');
+
+
 
 
 #doctor gard

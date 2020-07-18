@@ -34,7 +34,7 @@ class UserController extends Controller
         $user=Auth::user();
         $user->update($request->all());
        
-        return redirect()->route('home');
+        return redirect()->route('appointments.index');
 
 
     }

@@ -27,7 +27,7 @@ class HomeController extends Controller
         if (Auth::user()->is_admin == 1){
             return view('adminlte.dashboard');
         }else{
-            return view('home');
+            return view('appointments.index');
         }
         
     }

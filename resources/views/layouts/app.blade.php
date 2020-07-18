@@ -77,15 +77,20 @@
                         MarkAllAsRead</span></a>
 
                 </a>
-                {{--dd(var_dump(auth()->user()->unreadNotifications))--}}
+             
                 @foreach(auth()->user()->unreadNotifications as $notification)
 
                 <div class="dropdown-divider"></div>
+                
                 <a href="#" class="dropdown-item bg-info">
                     {{ $notification->data['data'] }}
-
+                   
+                    <!-- <button type="button" class="btn btn-danger">Decline</button> -->
+                    
                     <span class="float-right text-muted text-sm">3 mins</span>
+                    
                 </a>
+                
                 @endforeach
 
                 @foreach(auth()->user()->readNotifications as $read)
