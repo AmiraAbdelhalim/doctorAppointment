@@ -22,7 +22,7 @@ class AppointmentController extends Controller
             ]);
             
         }else{
-            $appointments= Appointment::all();
+            $appointments= Appointment::all()->where('user_id',Auth::user()->id);
             // dd($appointments);
             return view('home',[
                 'appointmentss'=> $appointments
@@ -61,6 +61,14 @@ class AppointmentController extends Controller
         Appointment::find($id)->update([
             'status'=>'not approved'
         ]);
+        return redirect()->route('appointments.index');
+    }
+
+    public function destroy($id)
+    {
+        
+        $appointment_id = Appointment::find($id);
+        $appointment_id->delete();
         return redirect()->route('appointments.index');
     }
 }

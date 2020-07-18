@@ -38,7 +38,14 @@
                     @csrf
                     @method('PUT')
                     <button type="submit" class="btn btn-success">Approve</button>
-                </form></td>
+                </form>
+                <!-- form for delete -->
+                <form id="delete{{$appointment->id}}" method="POST" action="{{route('appointments.destroy', ['id'=>$appointment->id])}}">
+                @csrf
+                {{method_field("DELETE")}}
+                      <button type="button" class="btn btn-danger" onclick="deleteConfirmation()">Decline</button>
+                </form>
+                </td>
                   </tr>
               @endforeach
         </tbody>
@@ -52,4 +59,15 @@
         </div>
     </div>
 </div>
+
+<script>
+function deleteConfirmation(){
+    var confirm_delete=confirm("Do you want to DECLINE the appointment?");
+    console.log(confirm_delete);
+    if (confirm_delete== true){
+        document.getElementById("delete{{$appointment->id}}").submit();
+    }
+   
+}
+</script>
 @endsection

@@ -42,10 +42,10 @@ Route::prefix('/markAsRead')->middleware(['auth',])->group(function(){
     })->name('mark');
 });
 
-#approve notification
+#approve / decline notification
 Route::put('/approve/{id}', 'appointments\AppointmentController@update')->name('appointment.update');
 
-
+Route::delete('/appointments/{id}','appointments\AppointmentController@destroy')->name('appointments.destroy');
 
 
 #doctor gard
