@@ -16,14 +16,12 @@ class AppointmentController extends Controller
         
         if (Auth::user()->is_admin == 1){
             $appointments= Appointment::all();
-            // dd($appointments);
             return view('appointments.index',[
                 'appointments'=>$appointments
             ]);
             
         }else{
             $appointments= Appointment::all()->where('user_id',Auth::user()->id);
-            // dd($appointments);
             return view('home',[
                 'appointmentss'=> $appointments
             ]);
@@ -69,6 +67,11 @@ class AppointmentController extends Controller
         
         $appointment_id = Appointment::find($id);
         $appointment_id->delete();
+        $user=User::where('is_admin',1);
+        $details=[
+            'body'=>"$appointment_id this appointment is canceled please make another appointment"
+        ];
+        $user->notify(new \App\Notifications\AppointmentCancel($details));
         return redirect()->route('appointments.index');
     }
 }
